@@ -28,12 +28,12 @@ export default function Footer() {
       <div className="bg-amber-50 border-b border-amber-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3">
           <p className="text-xs text-amber-800 text-center">
-            <strong>Hinweis:</strong> Diese Website enthält Affiliate-Links. Bei einem Kauf über diese Links erhalten
-            wir ggf. eine Provision – für dich ohne Mehrkosten. Mehr Infos auf unserer{' '}
+            <strong>Hinweis:</strong> Einige Links auf dieser Seite können Affiliate-Links sein.
+            Wenn du darüber kaufst, erhalten wir eventuell eine Provision.
+            Für dich entstehen keine Mehrkosten.{' '}
             <Link href="/transparenz" className="underline hover:text-amber-900">
-              Transparenz-Seite
+              Mehr erfahren
             </Link>
-            .
           </p>
         </div>
       </div>
