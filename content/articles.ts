@@ -55,6 +55,25 @@ export const articles: Article[] = [
           href: '#affiliate-link-hier-einsetzen',
           disclaimer: '* Affiliate-Link – wir erhalten ggf. eine Provision, für dich entstehen keine Mehrkosten.',
         },
+        recommendations: [
+          {
+            badge: 'Unsere Empfehlung für Einsteiger',
+            productType: 'Einsteiger-Set',
+            benefit: 'Alles Wichtige für den Start – komplett und sofort einsatzbereit.',
+            targetAudience: 'Ideal für alle, die ohne langes Suchen direkt loslegen wollen.',
+            linkText: 'Jetzt ansehen →',
+            href: '#affiliate-link',
+            highlight: true,
+          },
+          {
+            badge: 'Günstige Grundausstattung',
+            productType: 'Budget-Set',
+            benefit: 'Solide Qualität zum kleinen Preis – perfekt zum Ausprobieren.',
+            targetAudience: 'Für alle, die erst testen möchten, bevor sie mehr investieren.',
+            linkText: 'Zum Angebot →',
+            href: '#affiliate-link',
+          },
+        ],
       },
       {
         heading: 'Die besten kostenlosen Ressourcen',
@@ -117,6 +136,41 @@ export const articles: Article[] = [
         heading: 'Unser Fazit: Welches Produkt lohnt sich?',
         content:
           'Die Wahl hängt von deinen persönlichen Anforderungen ab. Als Faustregel:\n\n- **Einsteiger:** → [Produkt A] oder [Produkt C]\n- **Fortgeschrittene:** → [Produkt B]\n- **Knappes Budget:** → [Produkt C]\n- **Profi-Einsatz:** → [Produkt B] mit Erweiterung [X]',
+        recommendations: [
+          {
+            badge: 'Unsere Empfehlung für Einsteiger',
+            productType: 'Einsteiger-Set',
+            benefit: 'Einfacher Einstieg mit allem, was du wirklich brauchst.',
+            targetAudience: 'Für Anfänger, die schnell und sicher starten wollen.',
+            linkText: 'Jetzt ansehen →',
+            href: '#affiliate-link',
+            highlight: true,
+          },
+          {
+            badge: 'Bestes platzsparendes Setup',
+            productType: 'Kompaktes Setup',
+            benefit: 'Maximale Funktion auf kleinstem Raum – ohne Abstriche.',
+            targetAudience: 'Für alle mit wenig Platz, die trotzdem nichts vermissen möchten.',
+            linkText: 'Mehr erfahren →',
+            href: '#affiliate-link',
+          },
+          {
+            badge: 'Günstige Grundausstattung',
+            productType: 'Budget-Set',
+            benefit: 'Das Wesentliche zu einem fairen Preis – ideal zum Einstieg.',
+            targetAudience: 'Für preisbewusste Käufer und alle, die erst testen möchten.',
+            linkText: 'Zum Angebot →',
+            href: '#affiliate-link',
+          },
+          {
+            badge: 'Premium-Setup für kleine Räume',
+            productType: 'Premium-Kompakt-Setup',
+            benefit: 'Höchste Qualität auf geringstem Raum – für wählerische Nutzer.',
+            targetAudience: 'Für Anspruchsvolle, die auch auf kleinem Raum das Beste erwarten.',
+            linkText: 'Jetzt entdecken →',
+            href: '#affiliate-link',
+          },
+        ],
       },
     ],
     conclusion:

@@ -12,6 +12,7 @@ export interface ArticleSection {
   tips?: string[];
   affiliate?: AffiliateBox;
   adPlaceholder?: boolean;
+  recommendations?: ProductRecommendation[];
 }
 
 export interface Article {
@@ -29,6 +30,16 @@ export interface Article {
   sections: ArticleSection[];
   conclusion: string;
   tags: string[];
+}
+
+export interface ProductRecommendation {
+  badge: string;
+  productType: string;
+  benefit: string;
+  targetAudience: string;
+  linkText?: string;
+  href?: string;
+  highlight?: boolean;
 }
 
 export interface Category {

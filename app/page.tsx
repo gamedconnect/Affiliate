@@ -4,6 +4,44 @@ import { getFeaturedArticles, getLatestArticles } from '@/content/articles';
 import { categories } from '@/content/categories';
 import ArticleCard from '@/components/ArticleCard';
 import AdPlaceholder from '@/components/AdPlaceholder';
+import RecommendationBox from '@/components/RecommendationBox';
+import type { ProductRecommendation } from '@/content/types';
+
+const homeRecommendations: ProductRecommendation[] = [
+  {
+    badge: 'Unsere Empfehlung für Einsteiger',
+    productType: 'Einsteiger-Set',
+    benefit: 'Alles Wesentliche für den Einstieg in einem Paket – kein langes Suchen, kein Raten.',
+    targetAudience: 'Für alle, die neu in [Deine Nische] starten und schnell loslegen wollen.',
+    linkText: 'Jetzt ansehen →',
+    href: '#affiliate-link',
+    highlight: true,
+  },
+  {
+    badge: 'Bestes platzsparendes Setup',
+    productType: 'Kompaktes Setup',
+    benefit: 'Volle Funktionalität auf minimalem Raum – ideal für kleine Wohnungen oder Büros.',
+    targetAudience: 'Für alle mit begrenztem Platzangebot, die auf nichts verzichten wollen.',
+    linkText: 'Mehr erfahren →',
+    href: '#affiliate-link',
+  },
+  {
+    badge: 'Günstige Grundausstattung',
+    productType: 'Budget-Set',
+    benefit: 'Solide Qualität zum kleinen Preis – der optimale Einstieg ohne großes Invest.',
+    targetAudience: 'Für preisbewusste Einsteiger und alle, die das Thema erst ausprobieren möchten.',
+    linkText: 'Zum Angebot →',
+    href: '#affiliate-link',
+  },
+  {
+    badge: 'Premium-Setup für kleine Räume',
+    productType: 'Premium-Kompakt-Setup',
+    benefit: 'Maximale Leistung auf geringstem Raum – keine Kompromisse bei Qualität oder Funktion.',
+    targetAudience: 'Für Anspruchsvolle, die auch auf kleinem Raum das Beste wollen.',
+    linkText: 'Jetzt entdecken →',
+    href: '#affiliate-link',
+  },
+];
 
 export const metadata: Metadata = {
   title: 'Ratgeber [Nische] – Dein zuverlässiger Guide',
@@ -109,6 +147,26 @@ export default function HomePage() {
             <ArticleCard key={article.slug} article={article} featured />
           ))}
         </div>
+      </section>
+
+      {/* ── EMPFEHLUNGSBOXEN ──────────────────────────────────────────────── */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 mt-16">
+        <div className="flex items-baseline justify-between mb-2">
+          <h2 className="text-2xl font-bold text-gray-900">Unsere Produkt-Empfehlungen</h2>
+        </div>
+        <p className="text-sm text-gray-500 mb-6">
+          Unabhängig ausgewählt – für jeden Bedarf die passende Ausstattung.
+        </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {homeRecommendations.map((rec) => (
+            <RecommendationBox key={rec.badge} rec={rec} />
+          ))}
+        </div>
+        <p className="mt-3 text-[11px] text-gray-400 text-center">
+          * Diese Seite enthält Affiliate-Links. Bei einem Kauf erhalten wir ggf. eine Provision –
+          für dich ohne Mehrkosten.{' '}
+          <Link href="/transparenz" className="underline">Mehr erfahren</Link>
+        </p>
       </section>
 
       {/* ── LATEST ARTICLES ───────────────────────────────────────────────── */}

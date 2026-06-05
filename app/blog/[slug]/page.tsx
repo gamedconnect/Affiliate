@@ -6,6 +6,7 @@ import { formatDate } from '@/lib/utils';
 import CategoryBadge from '@/components/CategoryBadge';
 import AffiliateCTA from '@/components/AffiliateCTA';
 import AdPlaceholder from '@/components/AdPlaceholder';
+import RecommendationBox from '@/components/RecommendationBox';
 
 interface Props {
   params: { slug: string };
@@ -169,6 +170,23 @@ export default function ArticlePage({ params }: Props) {
 
               {/* Affiliate CTA */}
               {section.affiliate && <AffiliateCTA box={section.affiliate} />}
+
+              {/* Recommendation boxes */}
+              {section.recommendations && section.recommendations.length > 0 && (
+                <div className="my-8">
+                  <h3 className="text-base font-semibold text-gray-700 mb-4">
+                    Passende Empfehlungen
+                  </h3>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {section.recommendations.map((rec) => (
+                      <RecommendationBox key={rec.badge} rec={rec} />
+                    ))}
+                  </div>
+                  <p className="mt-2 text-[10px] text-gray-400 text-center">
+                    * Affiliate-Links – bei einem Kauf erhalten wir ggf. eine Provision, für dich ohne Mehrkosten.
+                  </p>
+                </div>
+              )}
             </section>
           ))}
 
