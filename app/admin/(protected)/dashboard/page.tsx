@@ -10,12 +10,16 @@ async function getStats() {
     { count: totalRecs },
     { count: activeRecs },
     { count: totalClicks },
+    { count: totalArticles },
+    { count: publishedArticles },
   ] = await Promise.all([
     supabase.from('affiliate_links').select('*', { count: 'exact', head: true }),
     supabase.from('affiliate_links').select('*', { count: 'exact', head: true }).eq('is_active', true),
     supabase.from('product_recommendations').select('*', { count: 'exact', head: true }),
     supabase.from('product_recommendations').select('*', { count: 'exact', head: true }).eq('is_active', true),
     supabase.from('affiliate_clicks').select('*', { count: 'exact', head: true }),
+    supabase.from('articles').select('*', { count: 'exact', head: true }),
+    supabase.from('articles').select('*', { count: 'exact', head: true }).eq('is_published', true),
   ]);
 
   const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
@@ -31,6 +35,8 @@ async function getStats() {
     activeRecs: activeRecs ?? 0,
     totalClicks: totalClicks ?? 0,
     recentClicks: recentClicks ?? 0,
+    totalArticles: totalArticles ?? 0,
+    publishedArticles: publishedArticles ?? 0,
   };
 }
 
@@ -48,9 +54,10 @@ export default async function DashboardPage() {
   const [stats, recentLinks] = await Promise.all([getStats(), getRecentLinks()]);
 
   const statCards = [
-    { label: 'Affiliate-Links gesamt', value: stats.totalLinks, sub: `${stats.activeLinks} aktiv`, href: '/admin/affiliate-links', color: 'brand' },
-    { label: 'Empfehlungen gesamt', value: stats.totalRecs, sub: `${stats.activeRecs} aktiv`, href: '/admin/recommendations', color: 'green' },
-    { label: 'Klicks gesamt', value: stats.totalClicks, sub: `${stats.recentClicks} letzte 7 Tage`, href: null, color: 'purple' },
+    { label: 'Artikel', value: stats.totalArticles, sub: `${stats.publishedArticles} veröffentlicht`, href: '/admin/articles' },
+    { label: 'Affiliate-Links', value: stats.totalLinks, sub: `${stats.activeLinks} aktiv`, href: '/admin/affiliate-links' },
+    { label: 'Empfehlungen', value: stats.totalRecs, sub: `${stats.activeRecs} aktiv`, href: '/admin/recommendations' },
+    { label: 'Klicks gesamt', value: stats.totalClicks, sub: `${stats.recentClicks} letzte 7 Tage`, href: null },
   ];
 
   return (
@@ -61,11 +68,11 @@ export default async function DashboardPage() {
           <p className="text-sm text-gray-500 mt-1">Übersicht über dein Affiliate-System</p>
         </div>
         <div className="flex gap-3">
-          <Link href="/admin/affiliate-links/new" className="btn-primary">
-            + Neuer Link
+          <Link href="/admin/articles/new" className="btn-primary">
+            + Neuer Artikel
           </Link>
-          <Link href="/admin/recommendations/new" className="btn-secondary">
-            + Empfehlung
+          <Link href="/admin/affiliate-links/new" className="btn-secondary">
+            + Neuer Link
           </Link>
         </div>
       </div>
